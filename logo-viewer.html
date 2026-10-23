@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>像素北科 · 三维Logo</title><style>
+:root{color-scheme:light;--text:#344054;--muted:#64748b;--surface:rgba(245,247,251,.92);--border:rgba(30,50,80,.14);--focus:#287fc7}
+:root[data-theme="dark"]{color-scheme:dark;--text:#e8edf5;--muted:#a5b3c8;--surface:rgba(30,38,52,.94);--border:rgba(180,205,240,.2);--focus:#82c4f4}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent;color:var(--text);font:12px system-ui,"Microsoft YaHei",sans-serif}canvas{display:block;width:100%;height:calc(100% - 44px);touch-action:none;cursor:grab;outline:none}canvas.dragging{cursor:grabbing}canvas:focus-visible{outline:2px solid var(--focus);outline-offset:-3px}.ui{position:absolute;bottom:4px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:8px;white-space:nowrap}select,button,summary{font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 8px;cursor:pointer}select:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}button{display:inline-flex;align-items:center;gap:4px}button svg{width:14px;height:14px}.hint{position:absolute;bottom:46px;width:100%;text-align:center;font-size:11px;color:var(--muted);pointer-events:none;transition:opacity .2s}.hint.faded{opacity:0}details{position:absolute;top:4px;right:4px;max-width:calc(100% - 8px)}summary{width:fit-content;margin-left:auto;list-style:none}summary::-webkit-details-marker{display:none}.lights{display:grid;grid-template-columns:auto minmax(60px,1fr) 30px;gap:8px;align-items:center;border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:10px;margin:6px 0 0;width:248px;max-width:100%}.lights legend{display:none}.lights input{width:100%;margin:0;accent-color:var(--focus)}.lights output{text-align:right}.lights button{grid-column:1/-1;justify-self:end}#export-svg{display:none}
+</style></head><body>
+<canvas id="scene" tabindex="0" role="img" aria-label="像素北科立体Logo。拖拽旋转，滚轮缩放，方向键旋转，R键或双击重置。"></canvas>
+<span id="hint" class="hint">拖拽旋转 · 滚轮缩放</span>
+<div class="ui"><select id="material" aria-label="Logo配色"><option value="auto">跟随主题</option><option value="blue">经典蓝</option><option value="white">立体白</option></select><button id="reset" type="button">重置视角</button><button id="export-svg" type="button" hidden>导出SVG</button></div>
+<details><summary>光照</summary><fieldset id="lights" class="lights"><legend>光照俯仰角</legend><label for="key-pitch">主光</label><input id="key-pitch" type="range" min="-90" max="90" step="1" value="0" aria-describedby="key-pitch-out"><output id="key-pitch-out" for="key-pitch">0°</output><label for="inner-pitch">内侧光</label><input id="inner-pitch" type="range" min="-90" max="90" step="1" value="0" aria-describedby="inner-pitch-out"><output id="inner-pitch-out" for="inner-pitch">0°</output><button id="lights-reset" type="button">恢复默认光照</button></fieldset></details>
+<script>
+(() => {
+  try {
+  'use strict';
+
+  const KIND_CUBE = 0;
+  const KIND_FILL = 1;       // opaque
+  const KIND_GLASS_SIDES = 2; // glass, side faces only (top/bottom would be coplanar with cubes)
+
+  const A = 0.75;
+  const OUTER = A + 0.5;  // 1.25
+  const INNER = A - 0.5;  // 0.25
+  const HALF = 0.5;
+
+  const box = (min, max, layer, kind) => [
+    (min[0] + max[0]) / 2, (min[1] + max[1]) / 2, (min[2] + max[2]) / 2,
+    max[0] - min[0], max[1] - min[1], max[2] - min[2],
+    layer, min[1], kind,
+  ];
+  const cube = (x, y, z, layer) =>
+    box([x - 0.5, y - 0.5, z - 0.5], [x + 0.5, y + 0.5, z + 0.5], layer, KIND_CUBE);
+
+  const UPPER_BOTTOM = INNER;   //  0.25
+  const LOWER_TOP = -INNER;     // -0.25
+  const COLUMNS = [[A, A], [-A, A], [A, -A], [-A, -A]];
+
+  const BRIDGE_UPPER = OUTER * 0.6;
+  const BRIDGE_LOWER = OUTER * 0.6;
+  const BRIDGE_HEIGHT = 0.5;
+  const OPAQUE_BOXES = [
+    ...COLUMNS.map(([x, z]) => cube(x, A, z, 1)),
+    ...COLUMNS.map(([x, z]) => cube(x, -A, z, 0)),
+    box([-BRIDGE_UPPER, UPPER_BOTTOM, -INNER], [BRIDGE_UPPER, UPPER_BOTTOM + BRIDGE_HEIGHT, INNER], 1, KIND_FILL),
+    box([-INNER, UPPER_BOTTOM, INNER], [INNER, UPPER_BOTTOM + BRIDGE_HEIGHT, BRIDGE_UPPER], 1, KIND_FILL),
+    box([-INNER, UPPER_BOTTOM, -BRIDGE_UPPER], [INNER, UPPER_BOTTOM + BRIDGE_HEIGHT, -INNER], 1, KIND_FILL),
+    box([-BRIDGE_LOWER, LOWER_TOP - BRIDGE_HEIGHT, -INNER], [BRIDGE_LOWER, LOWER_TOP, INNER], 0, KIND_FILL),
+    box([-INNER, LOWER_TOP - BRIDGE_HEIGHT, INNER], [INNER, LOWER_TOP, BRIDGE_LOWER], 0, KIND_FILL),
+    box([-INNER, LOWER_TOP - BRIDGE_HEIGHT, -BRIDGE_LOWER], [INNER, LOWER_TOP, -INNER], 0, KIND_FILL),
+  ];
+  OPAQUE_BOXES.filter(b => b[8] === KIND_FILL && b[6] === 0).forEach(b => { b[7] = -A - HALF; });
+
+  const LINK_AREA_RATIO = 0.75;
+  const LINK_WIDTH = Math.sqrt(LINK_AREA_RATIO);
+  const GLASS_BOXES = COLUMNS.map(([x, z]) => {
+    const innerX = x - Math.sign(x) * HALF;
+    const innerZ = z - Math.sign(z) * HALF;
+    const outerX = innerX + Math.sign(x) * LINK_WIDTH;
+    const outerZ = innerZ + Math.sign(z) * LINK_WIDTH;
+    return box(
+      [Math.min(outerX, innerX), LOWER_TOP, Math.min(outerZ, innerZ)],
+      [Math.max(outerX, innerX), UPPER_BOTTOM, Math.max(outerZ, innerZ)],
+      1, KIND_GLASS_SIDES,
+    );
+  });
+
+  const DEFAULT_VIEW = {
+    azimuth: Math.PI / 4,
+    elevation: Math.atan(1 / Math.SQRT2), // 35.264 deg
+    halfExtent: 2.13,
+  };
+  const TARGET = [0, 0, 0];
+  const CAMERA_DISTANCE = 10;
+
+  const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+  const PALETTE = {
+    topUpper:    hex('#3ab0e6'),
+    sideUpperHi: hex('#2c74be'),
+    sideUpperLo: hex('#20438a'),
+    topLower:    hex('#26497a'),
+    sideLowerHi: hex('#1c3964'),
+    sideLowerLo: hex('#122341'),
+
+    fillTint:  [0.88, 0.93, 0.98],  // cross fill: a touch deeper and cooler than the cubes
+
+    innerHi: hex('#2192d3'),        // at the top edge of the face
+    innerLo: hex('#28a0e2'),        // at the bottom edge, slightly brighter near the fill
+    innerTop: hex('#4ec8f8'),       // on top faces, once the inner light is pitched upward
+
+    glassTop: hex('#55b4f4'),
+    glassHi:  hex('#4a9cf0'),
+    glassLo:  hex('#2a68cc'),
+    glassAlpha: 0.48,
+    glassBackdrop: hex('#122a55'), // stands in for the page wherever nothing opaque is behind glass
+  };
+
+
+  const BLUE_PALETTE = structuredClone(PALETTE);
+  const WHITE_PALETTE = {
+    topUpper: hex('#ffffff'), sideUpperHi: hex('#f0f0f0'), sideUpperLo: hex('#c9c9c9'),
+    topLower: hex('#e3e3e3'), sideLowerHi: hex('#e2e2e2'), sideLowerLo: hex('#b2b2b2'),
+    fillTint: [0.95, 0.95, 0.95], innerHi: hex('#ededed'), innerLo: hex('#d9d9d9'), innerTop: hex('#ffffff'),
+    glassTop: hex('#ffffff'), glassHi: hex('#f6f6f6'), glassLo: hex('#cfcfcf'),
+    glassAlpha: 0.48, glassBackdrop: hex('#929292'),
+  };
+  let theme = window.parent !== window && window.parent.document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  const material = document.getElementById('material');
+  Object.assign(PALETTE, theme === 'dark' ? WHITE_PALETTE : BLUE_PALETTE);
+  document.documentElement.dataset.theme = theme;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const canvas = document.getElementById('scene');
+  const gl = canvas.getContext('webgl2', { antialias: true, alpha: true, premultipliedAlpha: true });
+  if (!gl) {
+    window.parent.postMessage({ type: 'brand-unavailable' }, window.location.origin);
+    return;
+  }
+
+  const VS = `#version 300 es
+  layout(location = 0) in vec3 aPos;
+  layout(location = 1) in vec3 aNormal;
+  layout(location = 2) in vec3 aOffset;
+  layout(location = 3) in vec3 aScale;
+  layout(location = 4) in vec3 aStyle; // layer, gradient base height, kind
+  uniform mat4 uViewProj;
+  out vec3 vNormal;
+  out vec3 vWorld;
+  out vec3 vLocal;
+  flat out vec3 vScale;
+  flat out vec3 vStyle;
+  flat out vec3 vFaceCenter;
+  void main() {
+    vec3 world = aPos * aScale + aOffset;
+    vNormal = aNormal;
+    vWorld = world;
+    vLocal = aPos;
+    vScale = aScale;
+    vStyle = aStyle;
+    vFaceCenter = aOffset + aNormal * aScale * 0.5;
+    gl_Position = uViewProj * vec4(world, 1.0);
+  }`;
+
+  const COMMON_GLSL = `
+  uniform vec3 uToCamera;
+  uniform vec3 uTarget;
+  uniform vec3 uKeyDir; // toward the key light; pitch 0 = horizontal (the reference look)
+  float keyLight(vec3 n) {
+    return 0.6 + 0.4 * max(dot(n, uKeyDir), 0.0);
+  }
+  float capLight(vec3 n) {
+    return keyLight(n) / 0.6;
+  }
+  float depthCue(vec3 faceCenter) {
+    return 1.0 + 0.06 * dot(faceCenter - uTarget, uToCamera);
+  }
+  vec3 fitRange(vec3 c) {
+    c = max(c, vec3(0.0));
+    return c / max(1.0, max(c.r, max(c.g, c.b)));
+  }`;
+
+  const OPAQUE_FS = `#version 300 es
+  precision highp float;
+  in vec3 vNormal;
+  in vec3 vWorld;
+  in vec3 vLocal;
+  flat in vec3 vScale;
+  flat in vec3 vStyle;
+  flat in vec3 vFaceCenter;
+  uniform vec3 uTopUpper, uSideUpperHi, uSideUpperLo;
+  uniform vec3 uTopLower, uSideLowerHi, uSideLowerLo;
+  uniform vec3 uFillTint;
+  uniform vec3 uInnerHi, uInnerLo, uInnerTop;
+  uniform vec2 uInnerPitch; // (sin, cos) of the inner light's pitch
+  out vec4 outColor;
+  ${COMMON_GLSL}
+  void main() {
+    vec3 n = normalize(vNormal);
+    float layer = vStyle.x;
+    bool fill = vStyle.z > 0.5;
+    float t = clamp(vWorld.y - vStyle.y, 0.0, 1.0);
+
+    vec3 color;
+    vec3 inner;
+    float lam; // how squarely this face faces the inner light
+    if (n.y > 0.5) {
+      color = mix(uTopLower, uTopUpper, layer) * capLight(n);
+      inner = uInnerTop;
+      lam = uInnerPitch.x;
+    } else if (n.y < -0.5) {
+      color = mix(uSideLowerLo, uSideUpperLo, layer) * 0.7 * capLight(n);
+      inner = uInnerLo * 0.7;
+      lam = -uInnerPitch.x;
+    } else {
+      vec3 hi = mix(uSideLowerHi, uSideUpperHi, layer);
+      vec3 lo = mix(uSideLowerLo, uSideUpperLo, layer);
+      color = mix(lo, hi, t) * keyLight(n);
+      inner = mix(uInnerLo, uInnerHi, t);
+      lam = step(0.0, dot(n.xz, -vFaceCenter.xz)) * uInnerPitch.y;
+    }
+
+    if (layer > 0.5 && !fill) {
+      float back = clamp(0.5 + 0.7 * dot(vFaceCenter.xz, vec2(-0.70710678)), 0.0, 1.0);
+      inner *= 0.9 + 0.1 * max(dot(n, uKeyDir), 0.0);
+      color = mix(color, inner, back * max(lam, 0.0));
+    }
+
+    if (fill) color *= uFillTint;
+    color *= depthCue(vFaceCenter);
+    outColor = vec4(fitRange(color), 1.0);
+  }`;
+
+  const GLASS_FS = `#version 300 es
+  precision highp float;
+  in vec3 vNormal;
+  in vec3 vWorld;
+  in vec3 vLocal;
+  flat in vec3 vScale;
+  flat in vec3 vStyle;
+  flat in vec3 vFaceCenter;
+  uniform vec3 uGlassTop, uGlassHi, uGlassLo, uBackdrop;
+  uniform float uAlpha;
+  uniform int uPass; // 0 = backdrop where the canvas is still empty, 1 = glass over
+  out vec4 outColor;
+  ${COMMON_GLSL}
+  void main() {
+    if (uPass == 0) {
+      outColor = vec4(uBackdrop, 1.0);
+      return;
+    }
+    vec3 n = normalize(vNormal);
+    float t = clamp((vWorld.y - vStyle.y) / vScale.y, 0.0, 1.0);
+    vec3 color;
+    if (n.y > 0.5) color = uGlassTop * capLight(n);
+    else if (n.y < -0.5) color = uGlassLo * 0.7 * capLight(n);
+    else color = mix(uGlassLo, uGlassHi, t) * keyLight(n);
+    color *= depthCue(vFaceCenter);
+    outColor = vec4(fitRange(color), uAlpha);
+  }`;
+
+  function compile(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  function createProgram(vs, fs, uniformNames) {
+    const program = gl.createProgram();
+    gl.attachShader(program, compile(gl.VERTEX_SHADER, vs));
+    gl.attachShader(program, compile(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
+    const u = {};
+    for (const name of uniformNames) u[name] = gl.getUniformLocation(program, name);
+    return { program, u };
+  }
+
+  const opaqueProg = createProgram(VS, OPAQUE_FS, [
+    'uViewProj', 'uToCamera', 'uTarget', 'uKeyDir',
+    'uTopUpper', 'uSideUpperHi', 'uSideUpperLo', 'uTopLower', 'uSideLowerHi', 'uSideLowerLo',
+    'uFillTint', 'uInnerHi', 'uInnerLo', 'uInnerTop', 'uInnerPitch',
+  ]);
+  const glassProg = createProgram(VS, GLASS_FS, [
+    'uViewProj', 'uToCamera', 'uTarget', 'uKeyDir',
+    'uGlassTop', 'uGlassHi', 'uGlassLo', 'uBackdrop', 'uAlpha', 'uPass',
+  ]);
+
+  const CUBE_VERTEX_COUNT = 36;
+  const SIDE_VERTEX_COUNT = 24;
+  const FACES = [
+    { n: [ 1, 0, 0], u: [0, 0, -1], v: [0, 1,  0] },
+    { n: [-1, 0, 0], u: [0, 0,  1], v: [0, 1,  0] },
+    { n: [ 0, 0, 1], u: [1, 0,  0], v: [0, 1,  0] },
+    { n: [ 0, 0,-1], u: [-1, 0, 0], v: [0, 1,  0] },
+    { n: [ 0, 1, 0], u: [1, 0,  0], v: [0, 0, -1] },
+    { n: [ 0,-1, 0], u: [1, 0,  0], v: [0, 0,  1] },
+  ];
+  function buildCube() {
+    const quad = [[-1, -1], [1, -1], [1, 1], [-1, -1], [1, 1], [-1, 1]];
+    const data = [];
+    for (const { n, u, v } of FACES) {
+      for (const [su, sv] of quad) {
+        for (let i = 0; i < 3; i++) data.push(0.5 * (n[i] + su * u[i] + sv * v[i]));
+        data.push(...n);
+      }
+    }
+    return new Float32Array(data);
+  }
+
+  const cubeBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, cubeBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, buildCube(), gl.STATIC_DRAW);
+
+  function bindCubeGeometry() {
+    gl.bindBuffer(gl.ARRAY_BUFFER, cubeBuf);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 24, 0);
+    gl.enableVertexAttribArray(1);
+    gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 24, 12);
+  }
+
+  const opaqueVao = gl.createVertexArray();
+  gl.bindVertexArray(opaqueVao);
+  bindCubeGeometry();
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(OPAQUE_BOXES.flat()), gl.STATIC_DRAW);
+  [[2, 3, 0], [3, 3, 12], [4, 3, 24]].forEach(([loc, size, offset]) => {
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 9 * 4, offset);
+    gl.vertexAttribDivisor(loc, 1);
+  });
+
+  const glassVao = gl.createVertexArray();
+  gl.bindVertexArray(glassVao);
+  bindCubeGeometry();
+  gl.bindVertexArray(null);
+
+  gl.useProgram(opaqueProg.program);
+  gl.uniform3fv(opaqueProg.u.uTarget, TARGET);
+  gl.uniform3fv(opaqueProg.u.uTopUpper, PALETTE.topUpper);
+  gl.uniform3fv(opaqueProg.u.uSideUpperHi, PALETTE.sideUpperHi);
+  gl.uniform3fv(opaqueProg.u.uSideUpperLo, PALETTE.sideUpperLo);
+  gl.uniform3fv(opaqueProg.u.uTopLower, PALETTE.topLower);
+  gl.uniform3fv(opaqueProg.u.uSideLowerHi, PALETTE.sideLowerHi);
+  gl.uniform3fv(opaqueProg.u.uSideLowerLo, PALETTE.sideLowerLo);
+  gl.uniform3fv(opaqueProg.u.uFillTint, PALETTE.fillTint);
+  gl.uniform3fv(opaqueProg.u.uInnerHi, PALETTE.innerHi);
+  gl.uniform3fv(opaqueProg.u.uInnerLo, PALETTE.innerLo);
+  gl.uniform3fv(opaqueProg.u.uInnerTop, PALETTE.innerTop);
+
+  gl.useProgram(glassProg.program);
+  gl.uniform3fv(glassProg.u.uTarget, TARGET);
+  gl.uniform3fv(glassProg.u.uGlassTop, PALETTE.glassTop);
+  gl.uniform3fv(glassProg.u.uGlassHi, PALETTE.glassHi);
+  gl.uniform3fv(glassProg.u.uGlassLo, PALETTE.glassLo);
+  gl.uniform3fv(glassProg.u.uBackdrop, PALETTE.glassBackdrop);
+  gl.uniform1f(glassProg.u.uAlpha, PALETTE.glassAlpha);
+
+  gl.enable(gl.DEPTH_TEST);
+  gl.depthFunc(gl.LEQUAL);
+  gl.enable(gl.CULL_FACE);
+  gl.cullFace(gl.BACK);
+  gl.clearColor(0, 0, 0, 0);
+
+  const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const normalize = (a) => { const l = Math.hypot(a[0], a[1], a[2]); return [a[0] / l, a[1] / l, a[2] / l]; };
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+  function lookAt(eye, center, up) {
+    const z = normalize(sub(eye, center));
+    const x = normalize(cross(up, z));
+    const y = cross(z, x);
+    return [
+      x[0], y[0], z[0], 0,
+      x[1], y[1], z[1], 0,
+      x[2], y[2], z[2], 0,
+      -dot(x, eye), -dot(y, eye), -dot(z, eye), 1,
+    ];
+  }
+  function ortho(l, r, b, t, n, f) {
+    return [
+      2 / (r - l), 0, 0, 0,
+      0, 2 / (t - b), 0, 0,
+      0, 0, -2 / (f - n), 0,
+      -(r + l) / (r - l), -(t + b) / (t - b), -(f + n) / (f - n), 1,
+    ];
+  }
+  function multiply(a, b) {
+    const out = new Float32Array(16);
+    for (let c = 0; c < 4; c++) {
+      for (let r = 0; r < 4; r++) {
+        let s = 0;
+        for (let k = 0; k < 4; k++) s += a[k * 4 + r] * b[c * 4 + k];
+        out[c * 4 + r] = s;
+      }
+    }
+    return out;
+  }
+
+  const MAX_ELEVATION = (89 * Math.PI) / 180;
+  const MIN_EXTENT = 1.2;
+  const MAX_EXTENT = 8;
+  const ROTATE_SPEED = 0.008;      // radians per CSS pixel
+  const INERTIA_DECAY_MS = 220;    // time constant of the spin-down after a flick
+
+  const KEY_AZIMUTH = Math.atan2(0.55, 1);
+  const DEFAULT_LIGHTS = { keyPitch: 0, innerPitch: 0 };
+  const lights = { ...DEFAULT_LIGHTS };
+
+  function keyDirFor(pitchDeg) {
+    const p = (pitchDeg * Math.PI) / 180;
+    return [Math.sin(KEY_AZIMUTH) * Math.cos(p), Math.sin(p), Math.cos(KEY_AZIMUTH) * Math.cos(p)];
+  }
+  function toCameraFor(v) {
+    const ce = Math.cos(v.elevation);
+    return [ce * Math.sin(v.azimuth), Math.sin(v.elevation), ce * Math.cos(v.azimuth)];
+  }
+
+  const view = { ...DEFAULT_VIEW };
+  const spin = { az: 0, el: 0 };   // radians per ms
+  let resetAnim = null;
+  let frameQueued = false;
+  let lastFrame = 0;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.round(canvas.clientWidth * dpr);
+    const h = Math.round(canvas.clientHeight * dpr);
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w;
+      canvas.height = h;
+    }
+  }
+
+  function step(now) {
+    const dt = lastFrame ? Math.min(now - lastFrame, 50) : 16;
+    lastFrame = now;
+
+    if (resetAnim) {
+      const t = clamp((now - resetAnim.start) / resetAnim.duration, 0, 1);
+      const e = 1 - Math.pow(1 - t, 3);
+      const from = resetAnim.from;
+      view.azimuth = from.azimuth + (DEFAULT_VIEW.azimuth - from.azimuth) * e;
+      view.elevation = from.elevation + (DEFAULT_VIEW.elevation - from.elevation) * e;
+      view.halfExtent = from.halfExtent * Math.pow(DEFAULT_VIEW.halfExtent / from.halfExtent, e);
+      if (t >= 1) resetAnim = null;
+    } else if (spin.az || spin.el) {
+      view.azimuth += spin.az * dt;
+      view.elevation = clamp(view.elevation + spin.el * dt, -MAX_ELEVATION, MAX_ELEVATION);
+      const decay = Math.exp(-dt / INERTIA_DECAY_MS);
+      spin.az *= decay;
+      spin.el *= decay;
+      if (Math.hypot(spin.az, spin.el) < 2e-5) spin.az = spin.el = 0;
+    }
+    return Boolean(resetAnim || spin.az || spin.el);
+  }
+
+  function render(now) {
+    frameQueued = false;
+    const animating = step(now);
+
+    resize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    const toCamera = toCameraFor(view);
+    const eye = toCamera.map((d, i) => TARGET[i] + d * CAMERA_DISTANCE);
+
+    const aspect = canvas.width / canvas.height;
+    const hh = aspect >= 1 ? view.halfExtent : view.halfExtent / aspect;
+    const hw = hh * aspect;
+    const viewProj = multiply(
+      ortho(-hw, hw, -hh, hh, 0.1, CAMERA_DISTANCE * 2),
+      lookAt(eye, TARGET, [0, 1, 0]),
+    );
+
+    const keyDir = keyDirFor(lights.keyPitch);
+    const innerPitch = (lights.innerPitch * Math.PI) / 180;
+
+    gl.disable(gl.BLEND);
+    gl.depthMask(true);
+    gl.useProgram(opaqueProg.program);
+    gl.uniformMatrix4fv(opaqueProg.u.uViewProj, false, viewProj);
+    gl.uniform3fv(opaqueProg.u.uToCamera, toCamera);
+    gl.uniform3fv(opaqueProg.u.uKeyDir, keyDir);
+    gl.uniform2f(opaqueProg.u.uInnerPitch, Math.sin(innerPitch), Math.cos(innerPitch));
+    gl.bindVertexArray(opaqueVao);
+    gl.drawArraysInstanced(gl.TRIANGLES, 0, CUBE_VERTEX_COUNT, OPAQUE_BOXES.length);
+
+    gl.enable(gl.BLEND);
+    gl.depthMask(false);
+    gl.useProgram(glassProg.program);
+    gl.uniformMatrix4fv(glassProg.u.uViewProj, false, viewProj);
+    gl.uniform3fv(glassProg.u.uToCamera, toCamera);
+    gl.uniform3fv(glassProg.u.uKeyDir, keyDir);
+    gl.bindVertexArray(glassVao);
+
+    const sorted = GLASS_BOXES
+      .map((b) => ({ b, depth: dot([b[0], b[1], b[2]], toCamera) }))
+      .sort((p, q) => p.depth - q.depth);
+    for (const { b } of sorted) {
+      gl.vertexAttrib3f(2, b[0], b[1], b[2]);
+      gl.vertexAttrib3f(3, b[3], b[4], b[5]);
+      gl.vertexAttrib3f(4, b[6], b[7], b[8]);
+      const count = b[8] === KIND_GLASS_SIDES ? SIDE_VERTEX_COUNT : CUBE_VERTEX_COUNT;
+
+      gl.blendFunc(gl.ONE_MINUS_DST_ALPHA, gl.ONE);
+      gl.uniform1i(glassProg.u.uPass, 0);
+      gl.drawArrays(gl.TRIANGLES, 0, count);
+
+      gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ZERO, gl.ONE);
+      gl.uniform1i(glassProg.u.uPass, 1);
+      gl.drawArrays(gl.TRIANGLES, 0, count);
+    }
+
+    gl.depthMask(true);
+    gl.disable(gl.BLEND);
+    gl.bindVertexArray(null);
+
+    if (animating) requestRender();
+    else lastFrame = 0;
+  }
+
+  function requestRender() {
+    if (!frameQueued) {
+      frameQueued = true;
+      requestAnimationFrame(render);
+    }
+  }
+
+  function stopMotion() {
+    resetAnim = null;
+    spin.az = spin.el = 0;
+  }
+
+  function rotate(dAzimuth, dElevation) {
+    view.azimuth += dAzimuth;
+    view.elevation = clamp(view.elevation + dElevation, -MAX_ELEVATION, MAX_ELEVATION);
+    requestRender();
+  }
+
+  function zoom(factor) {
+    view.halfExtent = clamp(view.halfExtent * factor, MIN_EXTENT, MAX_EXTENT);
+    requestRender();
+  }
+
+  function resetView() {
+    stopMotion();
+    const tau = Math.PI * 2;
+    const az = DEFAULT_VIEW.azimuth + ((((view.azimuth - DEFAULT_VIEW.azimuth) % tau) + tau + Math.PI) % tau) - Math.PI;
+    if (reducedMotion.matches) {
+      Object.assign(view, DEFAULT_VIEW);
+    } else {
+      resetAnim = {
+        start: performance.now(),
+        duration: 650,
+        from: { azimuth: az, elevation: view.elevation, halfExtent: view.halfExtent },
+      };
+    }
+    requestRender();
+  }
+
+  const QUAD = [[-1, -1], [1, -1], [1, 1], [-1, 1]];
+  const SAMPLES_PER_UNIT = 128; // visibility probes per world unit along each face edge
+
+  const lerp3 = (a, b, t) => a.map((x, i) => x + (b[i] - x) * t);
+  const scale3 = (a, s) => a.map((x) => x * s);
+  const mul3 = (a, b) => a.map((x, i) => x * b[i]);
+  const boxMin = (b) => [b[0] - b[3] / 2, b[1] - b[4] / 2, b[2] - b[5] / 2];
+  const boxMax = (b) => [b[0] + b[3] / 2, b[1] + b[4] / 2, b[2] + b[5] / 2];
+  const faceCenterOf = (b, n) => [0, 1, 2].map((i) => b[i] + n[i] * b[i + 3] * 0.5);
+  const facePoint = (b, f, su, sv) =>
+    [0, 1, 2].map((i) => b[i] + 0.5 * (f.n[i] + su * f.u[i] + sv * f.v[i]) * b[i + 3]);
+  const num = (x) => String(Math.round(x * 100) / 100);
+  const toHex = (c) => '#' + c.map((x) => Math.round(clamp(x, 0, 1) * 255).toString(16).padStart(2, '0')).join('');
+
+  function fitRange(c) {
+    const pos = c.map((x) => Math.max(x, 0));
+    const m = Math.max(1, ...pos);
+    return pos.map((x) => x / m);
+  }
+
+  function shadeOpaque(b, n, t, S) {
+    const P = PALETTE;
+    const layer = b[6];
+    const fill = b[8] === KIND_FILL;
+    const fc = faceCenterOf(b, n);
+    const key = 0.6 + 0.4 * Math.max(dot(n, S.keyDir), 0);
+    let color, inner, lam;
+    if (n[1] > 0.5) {
+      color = scale3(lerp3(P.topLower, P.topUpper, layer), key / 0.6);
+      inner = P.innerTop;
+      lam = S.sinI;
+    } else if (n[1] < -0.5) {
+      color = scale3(lerp3(P.sideLowerLo, P.sideUpperLo, layer), 0.7 * key / 0.6);
+      inner = scale3(P.innerLo, 0.7);
+      lam = -S.sinI;
+    } else {
+      const hi = lerp3(P.sideLowerHi, P.sideUpperHi, layer);
+      const lo = lerp3(P.sideLowerLo, P.sideUpperLo, layer);
+      color = scale3(lerp3(lo, hi, t), key);
+      inner = lerp3(P.innerLo, P.innerHi, t);
+      lam = (-(n[0] * fc[0] + n[2] * fc[2]) >= 0 ? 1 : 0) * S.cosI;
+    }
+    if (layer > 0.5 && !fill) {
+      const back = clamp(0.5 - 0.7 * 0.70710678 * (fc[0] + fc[2]), 0, 1);
+      inner = scale3(inner, 0.9 + 0.1 * Math.max(dot(n, S.keyDir), 0));
+      color = lerp3(color, inner, back * Math.max(lam, 0));
+    }
+    if (fill) color = mul3(color, P.fillTint);
+    return fitRange(scale3(color, 1 + 0.06 * dot(sub(fc, TARGET), S.toCamera)));
+  }
+
+  function shadeGlass(b, n, t, S) {
+    const P = PALETTE;
+    const key = 0.6 + 0.4 * Math.max(dot(n, S.keyDir), 0);
+    let color;
+    if (n[1] > 0.5) color = scale3(P.glassTop, key / 0.6);
+    else if (n[1] < -0.5) color = scale3(P.glassLo, 0.7 * key / 0.6);
+    else color = scale3(lerp3(P.glassLo, P.glassHi, t), key);
+    const fc = faceCenterOf(b, n);
+    return fitRange(scale3(color, 1 + 0.06 * dot(sub(fc, TARGET), S.toCamera)));
+  }
+
+  function faceShading(b, f, S, glass) {
+    const shade = glass ? shadeGlass : shadeOpaque;
+    if (Math.abs(f.n[1]) > 0.5) return { flat: shade(b, f.n, 0, S) };
+    const y0 = b[1] - b[4] / 2;
+    const y1 = b[1] + b[4] / 2;
+    const tOf = (y) => clamp(glass ? (y - b[7]) / b[4] : y - b[7], 0, 1);
+    return { y0, y1, c0: shade(b, f.n, tOf(y0), S), c1: shade(b, f.n, tOf(y1), S) };
+  }
+
+  function makeProjector(v, size) {
+    const z = toCameraFor(v);
+    const x = normalize(cross([0, 1, 0], z));
+    const y = cross(z, x);
+    const k = size / 2 / v.halfExtent;
+    return (p) => {
+      const d = sub(p, TARGET);
+      return [size / 2 + dot(d, x) * k, size / 2 - dot(d, y) * k];
+    };
+  }
+
+  function rayBlocked(p, d, boxes, self) {
+    for (const b of boxes) {
+      if (b === self) continue;
+      const lo = boxMin(b);
+      const hi = boxMax(b);
+      let t0 = 0;
+      let t1 = Infinity;
+      let hit = true;
+      for (let i = 0; i < 3 && hit; i++) {
+        if (Math.abs(d[i]) < 1e-12) {
+          hit = p[i] > lo[i] && p[i] < hi[i];
+          continue;
+        }
+        let a = (lo[i] - p[i]) / d[i];
+        let c = (hi[i] - p[i]) / d[i];
+        if (a > c) [a, c] = [c, a];
+        t0 = Math.max(t0, a);
+        t1 = Math.min(t1, c);
+        hit = t1 - t0 > 1e-6;
+      }
+      if (hit) return true;
+    }
+    return false;
+  }
+
+  function faceSamples(b, f) {
+    const extent = (axis) => Math.abs(dot(axis, [b[3], b[4], b[5]]));
+    const nu = Math.max(2, Math.ceil(extent(f.u) * SAMPLES_PER_UNIT));
+    const nv = Math.max(2, Math.ceil(extent(f.v) * SAMPLES_PER_UNIT));
+    const pts = [];
+    for (let i = 0; i < nu; i++) {
+      for (let j = 0; j < nv; j++) {
+        pts.push(facePoint(b, f, ((i + 0.5) / nu) * 2 - 1, ((j + 0.5) / nv) * 2 - 1));
+      }
+    }
+    return pts;
+  }
+
+  function convexHull(points) {
+    const p = [...points].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const turn = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const half = (list) => {
+      const out = [];
+      for (const q of list) {
+        while (out.length >= 2 && turn(out[out.length - 2], out[out.length - 1], q) <= 1e-9) out.pop();
+        out.push(q);
+      }
+      out.pop();
+      return out;
+    };
+    return [...half(p), ...half([...p].reverse())];
+  }
+
+  function hullsOverlap(A, B) {
+    for (const poly of [A, B]) {
+      for (let i = 0; i < poly.length; i++) {
+        const a = poly[i];
+        const b = poly[(i + 1) % poly.length];
+        const axis = [a[1] - b[1], b[0] - a[0]];
+        const range = (pts) => {
+          const d = pts.map((q) => q[0] * axis[0] + q[1] * axis[1]);
+          return [Math.min(...d), Math.max(...d)];
+        };
+        const [minA, maxA] = range(A);
+        const [minB, maxB] = range(B);
+        const eps = 1e-6 * Math.hypot(axis[0], axis[1]);
+        if (maxA <= minB + eps || maxB <= minA + eps) return false;
+      }
+    }
+    return true;
+  }
+
+  function compareDepth(a, b, toCamera) {
+    const aLo = boxMin(a), aHi = boxMax(a), bLo = boxMin(b), bHi = boxMax(b);
+    for (let k = 0; k < 3; k++) {
+      if (Math.abs(toCamera[k]) < 1e-9) continue;
+      const toward = toCamera[k] > 0 ? 1 : -1;
+      if (aHi[k] <= bLo[k] + 1e-9) return -toward;
+      if (bHi[k] <= aLo[k] + 1e-9) return toward;
+    }
+    return 0;
+  }
+
+  function paintOrder(boxes, toCamera, project) {
+    const hulls = boxes.map((b) => {
+      const lo = boxMin(b), hi = boxMax(b);
+      const corners = [];
+      for (let i = 0; i < 8; i++) {
+        corners.push(project([i & 1 ? hi[0] : lo[0], i & 2 ? hi[1] : lo[1], i & 4 ? hi[2] : lo[2]]));
+      }
+      return convexHull(corners);
+    });
+    const depth = boxes.map((b) => dot(b, toCamera));
+    const pending = boxes.map(() => new Set());
+    for (let i = 0; i < boxes.length; i++) {
+      for (let j = i + 1; j < boxes.length; j++) {
+        if (!hullsOverlap(hulls[i], hulls[j])) continue;
+        const r = compareDepth(boxes[i], boxes[j], toCamera);
+        if (r < 0) pending[j].add(i);
+        else if (r > 0) pending[i].add(j);
+      }
+    }
+    const order = [];
+    const left = new Set(boxes.keys());
+    while (left.size) {
+      const candidates = [...left].filter((i) => [...pending[i]].every((j) => !left.has(j)));
+      const pool = candidates.length ? candidates : [...left]; // only on a cycle
+      const next = pool.reduce((best, i) => (depth[i] < depth[best] ? i : best));
+      order.push(next);
+      left.delete(next);
+    }
+    return order;
+  }
+
+  function gradientLine(pts2, ys, yA, yB) {
+    const [s0, s1, s2] = pts2;
+    const e1 = [s1[0] - s0[0], s1[1] - s0[1]];
+    const e2 = [s2[0] - s0[0], s2[1] - s0[1]];
+    const r1 = ys[1] - ys[0];
+    const r2 = ys[2] - ys[0];
+    const det = e1[0] * e2[1] - e1[1] * e2[0];
+    const g = [(r1 * e2[1] - r2 * e1[1]) / det, (e1[0] * r2 - e2[0] * r1) / det];
+    const gg = g[0] * g[0] + g[1] * g[1];
+    const at = (y) => [s0[0] + (g[0] * (y - ys[0])) / gg, s0[1] + (g[1] * (y - ys[0])) / gg];
+    return [at(yA), at(yB)];
+  }
+
+  /**
+   * Builds an SVG string of the scene.
+   * options.view        { azimuth, elevation, halfExtent }, defaults to the default (logo) view
+   * options.lights      { keyPitch, innerPitch } in degrees, defaults to the current sliders
+   * options.size        output width/height in px (default 800, same framing as the reference)
+   * options.seamStroke  same-paint stroke width on opaque faces. Renderers anti-alias each polygon
+   *                     separately, so the page leaks through shared edges as faint lines; the
+   *                     stroke covers them and a clip to the exact silhouette keeps the outline
+   *                     unchanged. 0 disables both (default 1)
+   */
+  function toSVG(options = {}) {
+    const v = { ...DEFAULT_VIEW, ...options.view };
+    const L = { ...lights, ...options.lights };
+    const size = options.size ?? 800;
+    const seam = options.seamStroke ?? 1;
+
+    const toCamera = toCameraFor(v);
+    const innerPitch = (L.innerPitch * Math.PI) / 180;
+    const S = { toCamera, keyDir: keyDirFor(L.keyPitch), sinI: Math.sin(innerPitch), cosI: Math.cos(innerPitch) };
+    const project = makeProjector(v, size);
+    const awayFromCamera = scale3(toCamera, -1);
+
+    const items = [
+      ...OPAQUE_BOXES.map((b) => ({ b, glass: false })),
+      ...GLASS_BOXES.map((b) => ({ b, glass: true })),
+    ];
+    const order = paintOrder(items.map((it) => it.b), toCamera, project);
+
+    const defs = [];
+    const backdrops = [];
+    const shapes = [];
+    const outline = []; // every visible face as one subpath; a single path anti-aliases as a union
+    const paintFor = (shading, pts2, ys) => {
+      if (shading.flat) return toHex(shading.flat);
+      const h0 = toHex(shading.c0);
+      const h1 = toHex(shading.c1);
+      if (h0 === h1) return h0;
+      const [p0, p1] = gradientLine(pts2, ys, shading.y0, shading.y1);
+      const id = `g${defs.length}`;
+      defs.push(
+        `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${num(p0[0])}" y1="${num(p0[1])}" x2="${num(p1[0])}" y2="${num(p1[1])}">` +
+        `<stop offset="0" stop-color="${h0}"/><stop offset="1" stop-color="${h1}"/></linearGradient>`,
+      );
+      return `url(#${id})`;
+    };
+
+    for (const index of order) {
+      const { b, glass } = items[index];
+      const faces = b[8] === KIND_GLASS_SIDES ? FACES.slice(0, 4) : FACES;
+      for (const f of faces) {
+        if (dot(f.n, toCamera) <= 1e-6) continue;
+        const samples = faceSamples(b, f);
+        if (!samples.some((p) => !rayBlocked(p, toCamera, OPAQUE_BOXES, b))) continue; // fully hidden
+
+        const corners = QUAD.map(([su, sv]) => facePoint(b, f, su, sv));
+        const pts2 = corners.map(project);
+        const points = pts2.map((p) => `${num(p[0])},${num(p[1])}`).join(' ');
+        const paint = paintFor(faceShading(b, f, S, glass), pts2, corners.map((c) => c[1]));
+        outline.push(`M${points.replace(/ /g, 'L')}Z`);
+
+        if (glass) {
+          if (samples.some((p) => !rayBlocked(p, awayFromCamera, OPAQUE_BOXES, null))) {
+            backdrops.push(`<polygon points="${points}" fill="${toHex(PALETTE.glassBackdrop)}"/>`);
+          }
+          shapes.push(`<polygon points="${points}" fill="${paint}" fill-opacity="${PALETTE.glassAlpha}"/>`);
+        } else {
+          const stroke = seam > 0 ? ` stroke="${paint}" stroke-width="${seam}" stroke-linejoin="round"` : '';
+          shapes.push(`<polygon points="${points}" fill="${paint}"${stroke}/>`);
+        }
+      }
+    }
+
+    if (seam > 0) defs.push(`<clipPath id="silhouette"><path d="${outline.join('')}"/></clipPath>`);
+    return [
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" role="img">`,
+      '<title>方案 10 · 桥端藏到方块内侧</title>',
+      defs.length ? `<defs>\n${defs.join('\n')}\n</defs>` : '',
+      seam > 0 ? '<g clip-path="url(#silhouette)">' : '',
+      ...backdrops,
+      ...shapes,
+      seam > 0 ? '</g>' : '',
+      '</svg>',
+    ].filter(Boolean).join('\n') + '\n';
+  }
+
+  function downloadSVG() {
+    const url = URL.createObjectURL(new Blob([toSVG()], { type: 'image/svg+xml' }));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'cube-cluster.svg';
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  window.cubeCluster = {
+    toSVG,
+    get defaultView() { return { ...DEFAULT_VIEW }; },
+    get view() { return { ...view }; },
+    get lights() { return { ...lights }; },
+  };
+
+  const hint = document.getElementById('hint');
+  const markUsed = () => hint.classList.add('faded');
+
+  const pointers = new Map();
+  let pinchDistance = 0;
+  let velocity = { az: 0, el: 0, time: 0 };
+
+  const pinchSpan = () => {
+    const [a, b] = [...pointers.values()];
+    return Math.hypot(a.x - b.x, a.y - b.y);
+  };
+
+  canvas.addEventListener('pointerdown', (e) => {
+    stopMotion();
+    markUsed();
+    canvas.setPointerCapture(e.pointerId);
+    canvas.classList.add('dragging');
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, t: e.timeStamp });
+    velocity = { az: 0, el: 0, time: e.timeStamp };
+    if (pointers.size === 2) pinchDistance = pinchSpan();
+  });
+
+  canvas.addEventListener('pointermove', (e) => {
+    const p = pointers.get(e.pointerId);
+    if (!p) return;
+    const dx = e.clientX - p.x;
+    const dy = e.clientY - p.y;
+    const dt = Math.max(e.timeStamp - p.t, 1);
+    p.x = e.clientX;
+    p.y = e.clientY;
+    p.t = e.timeStamp;
+    if (pointers.size === 1) {
+      const dAz = -dx * ROTATE_SPEED;
+      const dEl = dy * ROTATE_SPEED;
+      rotate(dAz, dEl);
+      velocity = {
+        az: velocity.az * 0.6 + (dAz / dt) * 0.4,
+        el: velocity.el * 0.6 + (dEl / dt) * 0.4,
+        time: e.timeStamp,
+      };
+    } else if (pointers.size === 2) {
+      const d = pinchSpan();
+      if (pinchDistance > 0 && d > 0) zoom(pinchDistance / d);
+      pinchDistance = d;
+    }
+  });
+
+  const releasePointer = (e) => {
+    const wasRotating = pointers.size === 1 && pointers.has(e.pointerId);
+    pointers.delete(e.pointerId);
+    if (pointers.size < 2) pinchDistance = 0;
+    if (pointers.size === 0) canvas.classList.remove('dragging');
+    if (wasRotating && !reducedMotion.matches && e.timeStamp - velocity.time < 60) {
+      spin.az = velocity.az;
+      spin.el = velocity.el;
+      requestRender();
+    }
+  };
+  canvas.addEventListener('pointerup', releasePointer);
+  canvas.addEventListener('pointercancel', releasePointer);
+
+  canvas.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    markUsed();
+    zoom(Math.exp(e.deltaY * 0.001));
+  }, { passive: false });
+
+  canvas.addEventListener('dblclick', resetView);
+
+  canvas.addEventListener('keydown', (e) => {
+    const stepAngle = (5 * Math.PI) / 180;
+    switch (e.key) {
+      case 'ArrowLeft':  stopMotion(); rotate(stepAngle, 0); break;
+      case 'ArrowRight': stopMotion(); rotate(-stepAngle, 0); break;
+      case 'ArrowUp':    stopMotion(); rotate(0, stepAngle); break;
+      case 'ArrowDown':  stopMotion(); rotate(0, -stepAngle); break;
+      case '+': case '=': stopMotion(); zoom(1 / 1.1); break;
+      case '-': case '_': stopMotion(); zoom(1.1); break;
+      case 'r': case 'R': case '0': resetView(); break;
+      default: return;
+    }
+    markUsed();
+    e.preventDefault();
+  });
+
+  document.getElementById('reset').addEventListener('click', resetView);
+  document.getElementById('export-svg').addEventListener('click', downloadSVG);
+
+  const lightSliders = [
+    ['keyPitch', document.getElementById('key-pitch'), document.getElementById('key-pitch-out')],
+    ['innerPitch', document.getElementById('inner-pitch'), document.getElementById('inner-pitch-out')],
+  ];
+  function syncLights() {
+    for (const [key, input, output] of lightSliders) {
+      input.value = String(lights[key]);
+      output.value = `${lights[key]}°`;
+      input.setAttribute('aria-valuetext', `${lights[key]} 度`);
+    }
+    requestRender();
+  }
+  for (const [key, input] of lightSliders) {
+    input.addEventListener('input', () => {
+      lights[key] = Number(input.value);
+      syncLights();
+    });
+  }
+  document.getElementById('lights-reset').addEventListener('click', () => {
+    Object.assign(lights, DEFAULT_LIGHTS);
+    syncLights();
+  });
+  window.addEventListener('resize', requestRender);
+
+  requestRender();
+
+  function updateMaterial() {
+    const selected = material.value === 'auto' ? (theme === 'dark' ? 'white' : 'blue') : material.value;
+    Object.assign(PALETTE, selected === 'white' ? WHITE_PALETTE : BLUE_PALETTE);
+    document.documentElement.dataset.material = selected;
+    gl.useProgram(opaqueProg.program);
+    for (const [key, value] of Object.entries(PALETTE)) {
+      const name = 'u' + key[0].toUpperCase() + key.slice(1);
+      if (opaqueProg.u[name]) gl.uniform3fv(opaqueProg.u[name], value);
+    }
+    gl.useProgram(glassProg.program);
+    gl.uniform3fv(glassProg.u.uGlassTop, PALETTE.glassTop);
+    gl.uniform3fv(glassProg.u.uGlassHi, PALETTE.glassHi);
+    gl.uniform3fv(glassProg.u.uGlassLo, PALETTE.glassLo);
+    gl.uniform3fv(glassProg.u.uBackdrop, PALETTE.glassBackdrop);
+    requestRender();
+  }
+  material.addEventListener('change', updateMaterial);
+  window.addEventListener('message', (event) => {
+    if (event.source !== window.parent || event.origin !== window.location.origin || event.data?.type !== 'brand-theme') return;
+    theme = event.data.theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = theme;
+    updateMaterial();
+  });
+  canvas.addEventListener('webglcontextlost', (event) => {
+    event.preventDefault();
+    window.parent.postMessage({ type: 'brand-unavailable' }, window.location.origin);
+  });
+  updateMaterial();
+  requestAnimationFrame(() => window.parent.postMessage({ type: 'brand-ready' }, window.location.origin));
+  } catch (error) {
+    window.parent.postMessage({ type: 'brand-unavailable' }, window.location.origin);
+  }
+})();
+</script></body></html>

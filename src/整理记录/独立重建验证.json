@@ -1,0 +1,39 @@
+{
+  "isolated_without_backup": true,
+  "full_rebuild_success": true,
+  "all_22_files_byte_identical": true,
+  "file_comparisons": {
+    "10号Logo.html": true,
+    "10号Logo.svg": true,
+    "10号Logo.png": true,
+    "10号Logo-3200.png": true,
+    "像素北科-白字-加粗.svg": true,
+    "像素北科-白字-加粗.png": true,
+    "像素北科-白字-加粗@2x.png": true,
+    "像素北科-黑字-加粗.svg": true,
+    "像素北科-黑字-加粗.png": true,
+    "像素北科-黑字-加粗@2x.png": true,
+    "像素北科-蓝字渐变-加粗.svg": true,
+    "像素北科-蓝字渐变-加粗.png": true,
+    "像素北科-蓝字渐变-加粗@2x.png": true,
+    "USTB SkyCode-白字-加粗.svg": true,
+    "USTB SkyCode-白字-加粗.png": true,
+    "USTB SkyCode-白字-加粗@2x.png": true,
+    "USTB SkyCode-黑字-加粗.svg": true,
+    "USTB SkyCode-黑字-加粗.png": true,
+    "USTB SkyCode-黑字-加粗@2x.png": true,
+    "USTB SkyCode-蓝字渐变-加粗.svg": true,
+    "USTB SkyCode-蓝字渐变-加粗.png": true,
+    "USTB SkyCode-蓝字渐变-加粗@2x.png": true
+  },
+  "browser": {
+    "offline_preview": true,
+    "six_svg_files_loaded": true,
+    "download_links": true,
+    "narrow_screen": true,
+    "rotation_and_reset": true,
+    "no_requests_outside_package": true,
+    "no_backup_dependency": true,
+    "errors": []
+  }
+}

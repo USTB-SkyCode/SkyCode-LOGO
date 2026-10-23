@@ -1,0 +1,110 @@
+{
+  "files": [
+    {
+      "old": "Logo-3200.png",
+      "new": "logo-3200.png",
+      "sha256": "4b3de3fafb2c607639762cad1fc61acc557ad9efce998af091a7b1563b7f1c73"
+    },
+    {
+      "old": "Logo.html",
+      "new": "logo.html",
+      "sha256": "d45930b878a4897946401d06ec9adf72dd60fe43a841207d467ea00b30ec93de"
+    },
+    {
+      "old": "Logo.png",
+      "new": "logo.png",
+      "sha256": "6f3f79f9b9f31994f3dbab48b1ed42138d07d25d152777ee6f1296a128c429c2"
+    },
+    {
+      "old": "Logo.svg",
+      "new": "logo.svg",
+      "sha256": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711"
+    },
+    {
+      "old": "USTB SkyCode-白字-加粗.png",
+      "new": "logo-en-white.png",
+      "sha256": "a09f8c1816832468c6d3c2fdba68f2018c624d6fe966b1b5a3ab359c9022f867"
+    },
+    {
+      "old": "USTB SkyCode-白字-加粗.svg",
+      "new": "logo-en-white.svg",
+      "sha256": "ff234529a997a3aa5963f9c07cdd560ebe2256b568bf1c422fae7e4586e7b5b0"
+    },
+    {
+      "old": "USTB SkyCode-立体白Logo-白字-加粗.png",
+      "new": "logo-en-white3d.png",
+      "sha256": "68e9b66fcf1d83087f0b78b8aaf1c99a61ec87decec36b83cc01110fabe5233b"
+    },
+    {
+      "old": "USTB SkyCode-立体白Logo-白字-加粗.svg",
+      "new": "logo-en-white3d.svg",
+      "sha256": "7caeff896752c1ebcb0d150fd910b81f5b9c0aa8ad8b429cee25e8e39f6ee8e4"
+    },
+    {
+      "old": "USTB SkyCode-蓝字渐变-加粗.png",
+      "new": "logo-en-blue.png",
+      "sha256": "af17fb4fd07faf5dada224858adffb7732f10710728c46d0e48301d15b8a08a9"
+    },
+    {
+      "old": "USTB SkyCode-蓝字渐变-加粗.svg",
+      "new": "logo-en-blue.svg",
+      "sha256": "f00ca4ad83d57ac40341bcfc822155bf08b671f272a3ca39cb8c571c31cf747e"
+    },
+    {
+      "old": "USTB SkyCode-黑字-加粗.png",
+      "new": "logo-en-black.png",
+      "sha256": "e239db80e03568e6b9af21167c6148f17a01957911670917151a36548faaa0c4"
+    },
+    {
+      "old": "USTB SkyCode-黑字-加粗.svg",
+      "new": "logo-en-black.svg",
+      "sha256": "ea5047b773e0dd061d26e1286a519a247552fcf1e3f12e9b927c59ef4c258db2"
+    },
+    {
+      "old": "像素北科-白字-加粗.png",
+      "new": "logo-zh-white.png",
+      "sha256": "8d3fcc3d891cfef4de997a5053a5ba348171a9c90c70b9cc2e974966e894f50d"
+    },
+    {
+      "old": "像素北科-白字-加粗.svg",
+      "new": "logo-zh-white.svg",
+      "sha256": "ae8778a70f743655a839fa9936a7e56bf7b11a4895cd91ad806bbad8d0e3d5d6"
+    },
+    {
+      "old": "像素北科-蓝字渐变-加粗.png",
+      "new": "logo-zh-blue.png",
+      "sha256": "49b58a55851cb93201cb48d6f3a67852e7bc93bc29cd68f99c5234856c27d4aa"
+    },
+    {
+      "old": "像素北科-蓝字渐变-加粗.svg",
+      "new": "logo-zh-blue.svg",
+      "sha256": "0c060cf27a15e894e54e9c927a0db60ca6ea20c4fde18f15dcb814c9300a3e64"
+    },
+    {
+      "old": "像素北科-黑字-加粗.png",
+      "new": "logo-zh-black.png",
+      "sha256": "6ba8884ed31c663edc6ea50c6aedf34e073ff2d802187abed237fb1d2ea7c8fa"
+    },
+    {
+      "old": "像素北科-黑字-加粗.svg",
+      "new": "logo-zh-black.svg",
+      "sha256": "5ad3dbc13551eb049ac95ea9f48ab9328a1868897d95506456358ac66a71515c"
+    },
+    {
+      "old": "src/输出/10号Logo-全部加粗文字样式.jpg",
+      "new": "src/输出/wordmarks.jpg",
+      "sha256": "dabd0bf2cac172e4f75372b9db4277bdf3f6dc2ced386e4698e9151e9203b91e"
+    },
+    {
+      "old": "src/输出/10号Logo-全部加粗文字样式.png",
+      "new": "src/输出/wordmarks.png",
+      "sha256": "4339bce3a2bec40dd3365ef469ef977d0cd1cb5af2153d88b871b2951c9809cd"
+    },
+    {
+      "old": "src/输出/立体白Logo-深色背景预览.png",
+      "new": "src/输出/white-preview.png",
+      "sha256": "ba23281981054362a3b2175cdccabcea755472ebe154b7b248d7866295019731"
+    }
+  ],
+  "artwork_bytes_unchanged": true
+}

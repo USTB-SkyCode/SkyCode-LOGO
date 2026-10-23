@@ -1,0 +1,24 @@
+{
+  "geometry_and_bridge_opacity_preserved": true,
+  "identical_alpha_silhouette": true,
+  "english_pixels_unchanged_and_pure_white": true,
+  "neutral_grayscale_material": true,
+  "logo_shading_range": [
+    136,
+    255
+  ],
+  "transparent_background": true,
+  "png_size": [
+    4262,
+    800
+  ],
+  "double_resolution_size": [
+    8524,
+    1600
+  ],
+  "files": {
+    "logo-en-white3d.svg": "7caeff896752c1ebcb0d150fd910b81f5b9c0aa8ad8b429cee25e8e39f6ee8e4",
+    "logo-en-white3d.png": "68e9b66fcf1d83087f0b78b8aaf1c99a61ec87decec36b83cc01110fabe5233b",
+    "logo-en-white3d@2x.png": "11e092951096aba3dc5fe7aa59e48d9e8dc029d8a9d521a5264d81d0cdd58dc1"
+  }
+}

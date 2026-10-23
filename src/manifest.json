@@ -1,0 +1,186 @@
+[
+  {
+    "language": "zh",
+    "language_name": "中文",
+    "text": "像素北科",
+    "color": "white",
+    "color_name": "白字",
+    "svg": "logo-zh-white.svg",
+    "width": 3074,
+    "height": 800,
+    "text_bounds": [
+      960,
+      193,
+      2034,
+      414
+    ],
+    "pixel_size": 54,
+    "pixel_pitch": 36,
+    "pixel_count": 192,
+    "logo_sha256": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711",
+    "blue_palette": null
+  },
+  {
+    "language": "zh",
+    "language_name": "中文",
+    "text": "像素北科",
+    "color": "black",
+    "color_name": "黑字",
+    "svg": "logo-zh-black.svg",
+    "width": 3074,
+    "height": 800,
+    "text_bounds": [
+      960,
+      193,
+      2034,
+      414
+    ],
+    "pixel_size": 54,
+    "pixel_pitch": 36,
+    "pixel_count": 192,
+    "logo_sha256": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711",
+    "blue_palette": null
+  },
+  {
+    "language": "zh",
+    "language_name": "中文",
+    "text": "像素北科",
+    "color": "blue",
+    "color_name": "蓝字渐变",
+    "svg": "logo-zh-blue.svg",
+    "width": 3074,
+    "height": 800,
+    "text_bounds": [
+      960,
+      193,
+      2034,
+      414
+    ],
+    "pixel_size": 54,
+    "pixel_pitch": 36,
+    "pixel_count": 192,
+    "logo_sha256": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711",
+    "blue_palette": [
+      [
+        0,
+        "#39aee4"
+      ],
+      [
+        0.16,
+        "#2fa3de"
+      ],
+      [
+        0.35,
+        "#2c7bbc"
+      ],
+      [
+        0.53,
+        "#27599c"
+      ],
+      [
+        0.7,
+        "#1c3a67"
+      ],
+      [
+        0.85,
+        "#142848"
+      ],
+      [
+        1,
+        "#12223f"
+      ]
+    ]
+  },
+  {
+    "language": "en",
+    "language_name": "英文",
+    "text": "USTB SkyCode",
+    "color": "white",
+    "color_name": "白字",
+    "svg": "logo-en-white.svg",
+    "width": 4262,
+    "height": 800,
+    "text_bounds": [
+      960,
+      193,
+      3222,
+      414
+    ],
+    "pixel_size": 54,
+    "pixel_pitch": 36,
+    "pixel_count": 192,
+    "logo_sha256": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711",
+    "blue_palette": null
+  },
+  {
+    "language": "en",
+    "language_name": "英文",
+    "text": "USTB SkyCode",
+    "color": "black",
+    "color_name": "黑字",
+    "svg": "logo-en-black.svg",
+    "width": 4262,
+    "height": 800,
+    "text_bounds": [
+      960,
+      193,
+      3222,
+      414
+    ],
+    "pixel_size": 54,
+    "pixel_pitch": 36,
+    "pixel_count": 192,
+    "logo_sha256": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711",
+    "blue_palette": null
+  },
+  {
+    "language": "en",
+    "language_name": "英文",
+    "text": "USTB SkyCode",
+    "color": "blue",
+    "color_name": "蓝字渐变",
+    "svg": "logo-en-blue.svg",
+    "width": 4262,
+    "height": 800,
+    "text_bounds": [
+      960,
+      193,
+      3222,
+      414
+    ],
+    "pixel_size": 54,
+    "pixel_pitch": 36,
+    "pixel_count": 192,
+    "logo_sha256": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711",
+    "blue_palette": [
+      [
+        0,
+        "#39aee4"
+      ],
+      [
+        0.16,
+        "#2fa3de"
+      ],
+      [
+        0.35,
+        "#2c7bbc"
+      ],
+      [
+        0.53,
+        "#27599c"
+      ],
+      [
+        0.7,
+        "#1c3a67"
+      ],
+      [
+        0.85,
+        "#142848"
+      ],
+      [
+        1,
+        "#12223f"
+      ]
+    ]
+  }
+]

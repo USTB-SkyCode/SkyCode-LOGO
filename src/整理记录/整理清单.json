@@ -1,0 +1,784 @@
+{
+  "final_files": {
+    "10号Logo.html": "d45930b878a4897946401d06ec9adf72dd60fe43a841207d467ea00b30ec93de",
+    "10号Logo.svg": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711",
+    "10号Logo.png": "6f3f79f9b9f31994f3dbab48b1ed42138d07d25d152777ee6f1296a128c429c2",
+    "10号Logo-3200.png": "4b3de3fafb2c607639762cad1fc61acc557ad9efce998af091a7b1563b7f1c73",
+    "像素北科-白字-加粗.svg": "ae8778a70f743655a839fa9936a7e56bf7b11a4895cd91ad806bbad8d0e3d5d6",
+    "像素北科-白字-加粗.png": "8d3fcc3d891cfef4de997a5053a5ba348171a9c90c70b9cc2e974966e894f50d",
+    "像素北科-白字-加粗@2x.png": "b22f0d392ad71a69e1198c56cadeab6bc3153ab69fc47b18ec46bfe89f868c82",
+    "像素北科-黑字-加粗.svg": "5ad3dbc13551eb049ac95ea9f48ab9328a1868897d95506456358ac66a71515c",
+    "像素北科-黑字-加粗.png": "6ba8884ed31c663edc6ea50c6aedf34e073ff2d802187abed237fb1d2ea7c8fa",
+    "像素北科-黑字-加粗@2x.png": "eb5be51389a8dddb9217a2774ea62dd42dd9846a023bf85a58d330d61de40790",
+    "像素北科-蓝字渐变-加粗.svg": "0c060cf27a15e894e54e9c927a0db60ca6ea20c4fde18f15dcb814c9300a3e64",
+    "像素北科-蓝字渐变-加粗.png": "49b58a55851cb93201cb48d6f3a67852e7bc93bc29cd68f99c5234856c27d4aa",
+    "像素北科-蓝字渐变-加粗@2x.png": "d8998c7e79f14f0aec3ca06f31b29fe285312cc8b1662b36cccbea8d9af37890",
+    "USTB SkyCode-白字-加粗.svg": "ff234529a997a3aa5963f9c07cdd560ebe2256b568bf1c422fae7e4586e7b5b0",
+    "USTB SkyCode-白字-加粗.png": "a09f8c1816832468c6d3c2fdba68f2018c624d6fe966b1b5a3ab359c9022f867",
+    "USTB SkyCode-白字-加粗@2x.png": "a755f15e1c1fa4920462cd00285a6c83431f27585b71678ac9695c4e9afef3ea",
+    "USTB SkyCode-黑字-加粗.svg": "ea5047b773e0dd061d26e1286a519a247552fcf1e3f12e9b927c59ef4c258db2",
+    "USTB SkyCode-黑字-加粗.png": "e239db80e03568e6b9af21167c6148f17a01957911670917151a36548faaa0c4",
+    "USTB SkyCode-黑字-加粗@2x.png": "6bae055e48fceed6a40eaaa8e49ae465ec522874a74fcdbbac2c9549fdc1d257",
+    "USTB SkyCode-蓝字渐变-加粗.svg": "f00ca4ad83d57ac40341bcfc822155bf08b671f272a3ca39cb8c571c31cf747e",
+    "USTB SkyCode-蓝字渐变-加粗.png": "af17fb4fd07faf5dada224858adffb7732f10710728c46d0e48301d15b8a08a9",
+    "USTB SkyCode-蓝字渐变-加粗@2x.png": "d41537f7c6b3d7a8ab9ecda3d015b572e3bbe83440ef230d3bd10b8705f210f1"
+  },
+  "archived_files_count": 151,
+  "archived": [
+    {
+      "original": "10号Logo-加粗文字组合/10号Logo-全部加粗文字样式.jpg",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/10号Logo-全部加粗文字样式.jpg",
+      "sha256": "dabd0bf2cac172e4f75372b9db4277bdf3f6dc2ced386e4698e9151e9203b91e"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/10号Logo-全部加粗文字样式.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/10号Logo-全部加粗文字样式.png",
+      "sha256": "4339bce3a2bec40dd3365ef469ef977d0cd1cb5af2153d88b871b2951c9809cd"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/10号Logo-加粗文字全部成品.zip",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/10号Logo-加粗文字全部成品.zip",
+      "sha256": "99b4e9a27e2d5721df494a1bbb3ef6cebbef8ae754c75d37d495ae1c8fe8113d"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/使用说明.md",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/使用说明.md",
+      "sha256": "0fed91af9ef838c64fe9363af30e8a693df9faa18e6546e874dd39a48cb56221"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/浏览器预览.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/浏览器预览.png",
+      "sha256": "fe8f346096a8b57ee48d8dfb30aa054a1b30c68a75206ed9888cf8237108bcb8"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/预览.html",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/预览.html",
+      "sha256": "9d402e35087f080d1b4413bc1124605e1c7787c47852b8af4d644a79e733babd"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/中文/像素北科-白字-加粗.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/中文/像素北科-白字-加粗.png",
+      "sha256": "8d3fcc3d891cfef4de997a5053a5ba348171a9c90c70b9cc2e974966e894f50d"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/中文/像素北科-白字-加粗.svg",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/中文/像素北科-白字-加粗.svg",
+      "sha256": "ae8778a70f743655a839fa9936a7e56bf7b11a4895cd91ad806bbad8d0e3d5d6"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/中文/像素北科-白字-加粗@2x.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/中文/像素北科-白字-加粗@2x.png",
+      "sha256": "b22f0d392ad71a69e1198c56cadeab6bc3153ab69fc47b18ec46bfe89f868c82"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/中文/像素北科-蓝字渐变-加粗.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/中文/像素北科-蓝字渐变-加粗.png",
+      "sha256": "49b58a55851cb93201cb48d6f3a67852e7bc93bc29cd68f99c5234856c27d4aa"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/中文/像素北科-蓝字渐变-加粗.svg",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/中文/像素北科-蓝字渐变-加粗.svg",
+      "sha256": "0c060cf27a15e894e54e9c927a0db60ca6ea20c4fde18f15dcb814c9300a3e64"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/中文/像素北科-蓝字渐变-加粗@2x.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/中文/像素北科-蓝字渐变-加粗@2x.png",
+      "sha256": "d8998c7e79f14f0aec3ca06f31b29fe285312cc8b1662b36cccbea8d9af37890"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/中文/像素北科-黑字-加粗.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/中文/像素北科-黑字-加粗.png",
+      "sha256": "6ba8884ed31c663edc6ea50c6aedf34e073ff2d802187abed237fb1d2ea7c8fa"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/中文/像素北科-黑字-加粗.svg",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/中文/像素北科-黑字-加粗.svg",
+      "sha256": "5ad3dbc13551eb049ac95ea9f48ab9328a1868897d95506456358ac66a71515c"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/中文/像素北科-黑字-加粗@2x.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/中文/像素北科-黑字-加粗@2x.png",
+      "sha256": "eb5be51389a8dddb9217a2774ea62dd42dd9846a023bf85a58d330d61de40790"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/制作资料/Ark-Pixel-OFL.txt",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/制作资料/Ark-Pixel-OFL.txt",
+      "sha256": "3ab41567e68e3988ba1ef16dd2644eca95ca5648ea12e7d46e6287fc0bbe5aee"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/制作资料/Cubic-11-OFL.txt",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/制作资料/Cubic-11-OFL.txt",
+      "sha256": "2b6e5938e5cffa0b9e183bd05f8c363e174e7ebed1a0556e2855fd1707fa2188"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/制作资料/fusion-pixel-12px-proportional-zh_hans.ttf",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/制作资料/fusion-pixel-12px-proportional-zh_hans.ttf",
+      "sha256": "60f62ae34b95eea47e5986dd425bcd51c4f785165bf06befade60a059f036066"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/制作资料/Galmuri-LICENSE.txt",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/制作资料/Galmuri-LICENSE.txt",
+      "sha256": "86a3ee9495f942f0243f18c103da9faca27adb88142613edb8bb852e56c892c1"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/制作资料/LICENSE-OFL",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/制作资料/LICENSE-OFL",
+      "sha256": "bc518cf64b8032c07690f33cc270c35c179255a6ac8efa7c165ebae7e8f76a63"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/制作资料/manifest.json",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/制作资料/manifest.json",
+      "sha256": "eb702501492019ccf6df22b306c8b34bb3abdf36e35e1401be6def33e1a22a98"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/制作资料/浏览器验证.json",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/制作资料/浏览器验证.json",
+      "sha256": "9a6e26b3452ee5758965fd320721c9076860dae14fe64093b558a36c467d2fc1"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/制作资料/验证记录.json",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/制作资料/验证记录.json",
+      "sha256": "39427383f3ff4d00a28b05345cb86a88b3039f2375c6b3409044222743471348"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/纯Logo/10号Logo-3200.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/纯Logo/10号Logo-3200.png",
+      "sha256": "4b3de3fafb2c607639762cad1fc61acc557ad9efce998af091a7b1563b7f1c73"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/纯Logo/10号Logo-旋转预览.html",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/纯Logo/10号Logo-旋转预览.html",
+      "sha256": "d45930b878a4897946401d06ec9adf72dd60fe43a841207d467ea00b30ec93de"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/纯Logo/10号Logo.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/纯Logo/10号Logo.png",
+      "sha256": "6f3f79f9b9f31994f3dbab48b1ed42138d07d25d152777ee6f1296a128c429c2"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/纯Logo/10号Logo.svg",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/纯Logo/10号Logo.svg",
+      "sha256": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/英文/USTB SkyCode-白字-加粗.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/英文/USTB SkyCode-白字-加粗.png",
+      "sha256": "a09f8c1816832468c6d3c2fdba68f2018c624d6fe966b1b5a3ab359c9022f867"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/英文/USTB SkyCode-白字-加粗.svg",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/英文/USTB SkyCode-白字-加粗.svg",
+      "sha256": "ff234529a997a3aa5963f9c07cdd560ebe2256b568bf1c422fae7e4586e7b5b0"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/英文/USTB SkyCode-白字-加粗@2x.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/英文/USTB SkyCode-白字-加粗@2x.png",
+      "sha256": "a755f15e1c1fa4920462cd00285a6c83431f27585b71678ac9695c4e9afef3ea"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/英文/USTB SkyCode-蓝字渐变-加粗.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/英文/USTB SkyCode-蓝字渐变-加粗.png",
+      "sha256": "af17fb4fd07faf5dada224858adffb7732f10710728c46d0e48301d15b8a08a9"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/英文/USTB SkyCode-蓝字渐变-加粗.svg",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/英文/USTB SkyCode-蓝字渐变-加粗.svg",
+      "sha256": "f00ca4ad83d57ac40341bcfc822155bf08b671f272a3ca39cb8c571c31cf747e"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/英文/USTB SkyCode-蓝字渐变-加粗@2x.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/英文/USTB SkyCode-蓝字渐变-加粗@2x.png",
+      "sha256": "d41537f7c6b3d7a8ab9ecda3d015b572e3bbe83440ef230d3bd10b8705f210f1"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/英文/USTB SkyCode-黑字-加粗.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/英文/USTB SkyCode-黑字-加粗.png",
+      "sha256": "e239db80e03568e6b9af21167c6148f17a01957911670917151a36548faaa0c4"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/英文/USTB SkyCode-黑字-加粗.svg",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/英文/USTB SkyCode-黑字-加粗.svg",
+      "sha256": "ea5047b773e0dd061d26e1286a519a247552fcf1e3f12e9b927c59ef4c258db2"
+    },
+    {
+      "original": "10号Logo-加粗文字组合/英文/USTB SkyCode-黑字-加粗@2x.png",
+      "archived": "备份/10号整理前资料/10号Logo-加粗文字组合/英文/USTB SkyCode-黑字-加粗@2x.png",
+      "sha256": "6bae055e48fceed6a40eaaa8e49ae465ec522874a74fcdbbac2c9549fdc1d257"
+    },
+    {
+      "original": "3dcube/cube-cluster.html",
+      "archived": "备份/10号整理前资料/3dcube/cube-cluster.html",
+      "sha256": "d45930b878a4897946401d06ec9adf72dd60fe43a841207d467ea00b30ec93de"
+    },
+    {
+      "original": "3dcube/cube-cluster.svg",
+      "archived": "备份/10号整理前资料/3dcube/cube-cluster.svg",
+      "sha256": "7552335dda2d0124968e27acec13f958215bc3bffa3f80d4e9464bf545a1d711"
+    },
+    {
+      "original": "scripts/build_bold_wordmarks.py",
+      "archived": "备份/旧制作程序/scripts/build_bold_wordmarks.py",
+      "sha256": "ebc6c2177ea92590e7aaccbdd1fa24e30803c4b0ad8fc1a8c3b00cba85239ec2"
+    },
+    {
+      "original": "scripts/build_final10_wordmarks.py",
+      "archived": "备份/旧制作程序/scripts/build_final10_wordmarks.py",
+      "sha256": "c8e69762af3dbd06618f0b9e6c2d8047100ece0828ffb9962f3fefb753ad9998"
+    },
+    {
+      "original": "scripts/build_geometric.py",
+      "archived": "备份/旧制作程序/scripts/build_geometric.py",
+      "sha256": "92600742d538d42c97c070e77e6e0a23248dd1bd3f5c60326fc265625349ff82"
+    },
+    {
+      "original": "scripts/edge-fits.json",
+      "archived": "备份/旧制作程序/scripts/edge-fits.json",
+      "sha256": "6aeb9270707d77f5f962d5a83457699585c5b6960e81487dfd35b00ff32e9a7e"
+    },
+    {
+      "original": "scripts/face-fit.json",
+      "archived": "备份/旧制作程序/scripts/face-fit.json",
+      "sha256": "80b3b859d903251aaf7a1c076e0890df622268d22d7a7205927e44712c731fa5"
+    },
+    {
+      "original": "scripts/final10-source-verification.json",
+      "archived": "备份/旧制作程序/scripts/final10-source-verification.json",
+      "sha256": "d63e565061f0a04ef9bd1819fed49101b95208ecb6e41bdd4dc77096a2bd40ea"
+    },
+    {
+      "original": "scripts/geometry.json",
+      "archived": "备份/旧制作程序/scripts/geometry.json",
+      "sha256": "815cba923c8bb0ef93c9d92d52c262c2b99e37b58bb99bb86e6e13711985c2d4"
+    },
+    {
+      "original": "scripts/inspect_fits.py",
+      "archived": "备份/旧制作程序/scripts/inspect_fits.py",
+      "sha256": "90ef169a239a4bf320eb1e87fe140b7245dc6487d58486ae6b0dddd9e090a24f"
+    },
+    {
+      "original": "scripts/package_bold_wordmarks.py",
+      "archived": "备份/旧制作程序/scripts/package_bold_wordmarks.py",
+      "sha256": "cf95ed63007ff5eb8a79e2f68cfdd0b8b3b0485894f640d8b297edbec09224c7"
+    },
+    {
+      "original": "scripts/package_outputs.py",
+      "archived": "备份/旧制作程序/scripts/package_outputs.py",
+      "sha256": "e35145a64a776cefa78f5484058c4442aa2e7e639cbe9d37d62ccfd03a928363"
+    },
+    {
+      "original": "scripts/rebuild_logo.py",
+      "archived": "备份/旧制作程序/scripts/rebuild_logo.py",
+      "sha256": "fe98d609747d027d7e6d18c3ac6d1781b10d2aa8f2360ea43f55c63e89eaa864"
+    },
+    {
+      "original": "scripts/refine_edges.py",
+      "archived": "备份/旧制作程序/scripts/refine_edges.py",
+      "sha256": "1d6d4ee05ee2c204404f64878146088781bba973167c1461c87838d0d04b70dc"
+    },
+    {
+      "original": "scripts/render.cjs",
+      "archived": "备份/旧制作程序/scripts/render.cjs",
+      "sha256": "97b75128b5635cc15722782fdb06320204af037d0404e2f819f7ca0e01569217"
+    },
+    {
+      "original": "scripts/render_bold_wordmarks.cjs",
+      "archived": "备份/旧制作程序/scripts/render_bold_wordmarks.cjs",
+      "sha256": "22ca67797da359d5f54b5e3051aa86ac9805320893338163f0794ab620c50f36"
+    },
+    {
+      "original": "scripts/render_browser.cjs",
+      "archived": "备份/旧制作程序/scripts/render_browser.cjs",
+      "sha256": "370246da78ea45137191cffe2397da0a1eb3a51730abebd927a60ba2b68736b8"
+    },
+    {
+      "original": "scripts/render_final10_wordmarks.cjs",
+      "archived": "备份/旧制作程序/scripts/render_final10_wordmarks.cjs",
+      "sha256": "4bfe8a11d71af8af7403a9769a70dbfe4439e0d1e67b5998b0e080c957e99591"
+    },
+    {
+      "original": "scripts/render_geometric.cjs",
+      "archived": "备份/旧制作程序/scripts/render_geometric.cjs",
+      "sha256": "b88d11730ad86e6d31c2bf1094da03b7f63160bbf9b18e9145339d0678e39d15"
+    },
+    {
+      "original": "scripts/verification.json",
+      "archived": "备份/旧制作程序/scripts/verification.json",
+      "sha256": "5baf7dee9124e296548a064ea358d3325c159c99a51b230f4682b2e9aaf67cee"
+    },
+    {
+      "original": "scripts/verify_bold_browser.cjs",
+      "archived": "备份/旧制作程序/scripts/verify_bold_browser.cjs",
+      "sha256": "231628105670f782a59bc883e3396ff27380c792a3608f77a639dc2f5987ead2"
+    },
+    {
+      "original": "scripts/verify_browser.cjs",
+      "archived": "备份/旧制作程序/scripts/verify_browser.cjs",
+      "sha256": "d04f468cf4b59b9941f5a9cb6699e9002677339482a147ec0d12c68106633ee6"
+    },
+    {
+      "original": "scripts/verify_final10_preview.cjs",
+      "archived": "备份/旧制作程序/scripts/verify_final10_preview.cjs",
+      "sha256": "875100c9a93720eb17a8364d9ee7ca6ec23497174d314501315a787f224d5170"
+    },
+    {
+      "original": "scripts/vertices.json",
+      "archived": "备份/旧制作程序/scripts/vertices.json",
+      "sha256": "599bac26ea786c23c261aae8c07f978814fc4757a8f03c9a80a612c02c890c2a"
+    },
+    {
+      "original": "scripts/__pycache__/build_bold_wordmarks.cpython-312.pyc",
+      "archived": "备份/旧制作程序/scripts/__pycache__/build_bold_wordmarks.cpython-312.pyc",
+      "sha256": "b1d37e87be1a42d848247ff248e331d7a59eec5babce4472bc2002605f134214"
+    },
+    {
+      "original": "vustb-logo-3200.png",
+      "archived": "备份/早期Logo与预览/vustb-logo-3200.png",
+      "sha256": "1cf312c774f9e2695c57e76b85eff9f6af0120b057eb9b1f2257c091f05094fc"
+    },
+    {
+      "original": "vustb-logo-geometric-3200.png",
+      "archived": "备份/早期Logo与预览/vustb-logo-geometric-3200.png",
+      "sha256": "89af37ba4fe2fef1e62425e958309216a680842a16de3953d8dcf053f6c0be26"
+    },
+    {
+      "original": "vustb-logo-geometric.png",
+      "archived": "备份/早期Logo与预览/vustb-logo-geometric.png",
+      "sha256": "79c15dcf0c896a5cb9ba7e9ba527194e6b7da63cffa0c62493906f83140bdfb7"
+    },
+    {
+      "original": "vustb-logo-geometric.svg",
+      "archived": "备份/早期Logo与预览/vustb-logo-geometric.svg",
+      "sha256": "8bb5fd1118903d94df987fff655330023a25714e56802cafd04d06f25a9d54c8"
+    },
+    {
+      "original": "vustb-logo.png",
+      "archived": "备份/早期Logo与预览/vustb-logo.png",
+      "sha256": "bff634d4b65fdda4376a6da9637842029405fae35f44d67d328f20f33d8d03ac"
+    },
+    {
+      "original": "vustb-logo.svg",
+      "archived": "备份/早期Logo与预览/vustb-logo.svg",
+      "sha256": "48b62f8d77879f0fc685e04722c141b00ac5454445604718a28d3da8761e8615"
+    },
+    {
+      "original": "两版Logo与全部文字样式对比.png",
+      "archived": "备份/早期Logo与预览/两版Logo与全部文字样式对比.png",
+      "sha256": "8be280128573977e21d629fa2e31356c3d76fe8cf7428666c3c1b6ca619d456f"
+    },
+    {
+      "original": "使用说明.md",
+      "archived": "备份/早期Logo与预览/使用说明.md",
+      "sha256": "114327917f058c429961e448f223aaf5b658c94fcf0c27aa4b740d54ea86cf2f"
+    },
+    {
+      "original": "几何结构.png",
+      "archived": "备份/早期Logo与预览/几何结构.png",
+      "sha256": "0cb7ec1f3b15b065caf21d206401edf9bbe19e69d2117b686c448f367e5f0eca"
+    },
+    {
+      "original": "参考原图/original.png",
+      "archived": "备份/参考与校对/参考原图/original.png",
+      "sha256": "fd7f6d6447bf942e188f5f3647c9d6ed6dd8c721e5ec19bb07bc9a08fb30bb42"
+    },
+    {
+      "original": "参考原图/source-alpha.png",
+      "archived": "备份/参考与校对/参考原图/source-alpha.png",
+      "sha256": "574c09937a156b2083a37942167388fd3db856e5f0e2b7956ad77677e930f628"
+    },
+    {
+      "original": "参考原图/source-white.png",
+      "archived": "备份/参考与校对/参考原图/source-white.png",
+      "sha256": "f574614d8012eee9839cc03cda6d0dfdae65eb4a8a7212e36a25a609fb76577a"
+    },
+    {
+      "original": "参考原图/vustb-logo.webp",
+      "archived": "备份/参考与校对/参考原图/vustb-logo.webp",
+      "sha256": "cf3a46398720a13a2c73d3c94d599161dcd7379490e2cacd188167ac13972639"
+    },
+    {
+      "original": "对照预览.png",
+      "archived": "备份/早期Logo与预览/对照预览.png",
+      "sha256": "199f92eb4c00cc5cfb371786049ae75d27650ca26e758c57600fdde2e3fa1002"
+    },
+    {
+      "original": "文字组合版-加粗/Logo与加粗字标-全部成品.zip",
+      "archived": "备份/历史文字版本/文字组合版-加粗/Logo与加粗字标-全部成品.zip",
+      "sha256": "ebf22af7d1bc98c81ebc3e5d6fd5c54ffb078f68a82174473d49005c4aa07f18"
+    },
+    {
+      "original": "文字组合版-加粗/两版Logo与全部文字样式对比.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/两版Logo与全部文字样式对比.png",
+      "sha256": "8be280128573977e21d629fa2e31356c3d76fe8cf7428666c3c1b6ca619d456f"
+    },
+    {
+      "original": "文字组合版-加粗/使用说明.md",
+      "archived": "备份/历史文字版本/文字组合版-加粗/使用说明.md",
+      "sha256": "391e938f59c2d58306407e4d0cc6e8893f83b2115e2e355d5ac99e9b41ae044e"
+    },
+    {
+      "original": "文字组合版-加粗/加粗版-全部版本预览.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/加粗版-全部版本预览.png",
+      "sha256": "8be280128573977e21d629fa2e31356c3d76fe8cf7428666c3c1b6ca619d456f"
+    },
+    {
+      "original": "文字组合版-加粗/预览.html",
+      "archived": "备份/历史文字版本/文字组合版-加粗/预览.html",
+      "sha256": "a561cfabea95fb1b3e189560e11376686f6b6e4c6d7a20ede50a4b411b3310c0"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/Ark-Pixel-OFL.txt",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/Ark-Pixel-OFL.txt",
+      "sha256": "3ab41567e68e3988ba1ef16dd2644eca95ca5648ea12e7d46e6287fc0bbe5aee"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/Cubic-11-OFL.txt",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/Cubic-11-OFL.txt",
+      "sha256": "2b6e5938e5cffa0b9e183bd05f8c363e174e7ebed1a0556e2855fd1707fa2188"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/fusion-pixel-12px-proportional-zh_hans.ttf",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/fusion-pixel-12px-proportional-zh_hans.ttf",
+      "sha256": "60f62ae34b95eea47e5986dd425bcd51c4f785165bf06befade60a059f036066"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/Galmuri-LICENSE.txt",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/Galmuri-LICENSE.txt",
+      "sha256": "86a3ee9495f942f0243f18c103da9faca27adb88142613edb8bb852e56c892c1"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/LICENSE-OFL",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/LICENSE-OFL",
+      "sha256": "bc518cf64b8032c07690f33cc270c35c179255a6ac8efa7c165ebae7e8f76a63"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/manifest.json",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/manifest.json",
+      "sha256": "77e1fea4b60ea66e4e5be56d60ceae916fb1c22e0257f06d8c7c46dd96a31875"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/成品保留校验.json",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/成品保留校验.json",
+      "sha256": "d63f4913ddb6271f29b9ce6dcec905d36b0946e21fc370eaded1ff8d05be9fc5"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/浏览器中文加粗预览.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/浏览器中文加粗预览.png",
+      "sha256": "bf4bedcf38fcb9041b8673fa89059f4cd7a9f016d851ccdf768a5e47b83287f0"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/浏览器英文加粗预览.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/浏览器英文加粗预览.png",
+      "sha256": "3f4f17499a60672563df5ed61cdac1ba610e3c0af9f03ff9fc9429a3dce7b71b"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/浏览器验证.json",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/浏览器验证.json",
+      "sha256": "0a242b3d41634850cde8515f8ce41dd4146702bb5a0b2c649042d75d8ebbcb68"
+    },
+    {
+      "original": "文字组合版-加粗/制作资料/验证记录.json",
+      "archived": "备份/历史文字版本/文字组合版-加粗/制作资料/验证记录.json",
+      "sha256": "0f8dc7cc733ed668850a49bee9991573d138531191586b3339b341ab102af2da"
+    },
+    {
+      "original": "文字组合版-加粗/纯Logo/几何优化版-3200.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/纯Logo/几何优化版-3200.png",
+      "sha256": "89af37ba4fe2fef1e62425e958309216a680842a16de3953d8dcf053f6c0be26"
+    },
+    {
+      "original": "文字组合版-加粗/纯Logo/几何优化版.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/纯Logo/几何优化版.png",
+      "sha256": "79c15dcf0c896a5cb9ba7e9ba527194e6b7da63cffa0c62493906f83140bdfb7"
+    },
+    {
+      "original": "文字组合版-加粗/纯Logo/几何优化版.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/纯Logo/几何优化版.svg",
+      "sha256": "8bb5fd1118903d94df987fff655330023a25714e56802cafd04d06f25a9d54c8"
+    },
+    {
+      "original": "文字组合版-加粗/纯Logo/忠实复绘版-3200.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/纯Logo/忠实复绘版-3200.png",
+      "sha256": "1cf312c774f9e2695c57e76b85eff9f6af0120b057eb9b1f2257c091f05094fc"
+    },
+    {
+      "original": "文字组合版-加粗/纯Logo/忠实复绘版.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/纯Logo/忠实复绘版.png",
+      "sha256": "bff634d4b65fdda4376a6da9637842029405fae35f44d67d328f20f33d8d03ac"
+    },
+    {
+      "original": "文字组合版-加粗/纯Logo/忠实复绘版.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/纯Logo/忠实复绘版.svg",
+      "sha256": "48b62f8d77879f0fc685e04722c141b00ac5454445604718a28d3da8761e8615"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/中文/像素北科-白字-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/中文/像素北科-白字-加粗.png",
+      "sha256": "1a6a2d7c658980234ca3ea83dd2b6b127e28ed5a877ec351cd8006f7abb327cb"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/中文/像素北科-白字-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/中文/像素北科-白字-加粗.svg",
+      "sha256": "a660e5a5e25ec844df76e61ded6f5277543d9872f489896c4572867305f0f37f"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/中文/像素北科-白字-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/中文/像素北科-白字-加粗@2x.png",
+      "sha256": "35dfdfef0e983075104f6fa5171f70bae881a179285e34f8b00b62ca2040d9a3"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/中文/像素北科-蓝字渐变-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/中文/像素北科-蓝字渐变-加粗.png",
+      "sha256": "47394d444ae096d18618da9212a1aebdcd2d6a0388692c584fb589861c6115e3"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/中文/像素北科-蓝字渐变-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/中文/像素北科-蓝字渐变-加粗.svg",
+      "sha256": "113a16bd18722dbc4ce115502dd0093502f63da8a3effeef585278e8a6c8162e"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/中文/像素北科-蓝字渐变-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/中文/像素北科-蓝字渐变-加粗@2x.png",
+      "sha256": "ee19eb8d1abde6f8a6752babb067cbab78828286d553a1fac9e1d2a591ecc837"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/中文/像素北科-黑字-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/中文/像素北科-黑字-加粗.png",
+      "sha256": "eef5df8e1445446da0d556bcf0db3515817623e03a474ebc70096b9c379221a2"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/中文/像素北科-黑字-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/中文/像素北科-黑字-加粗.svg",
+      "sha256": "b854bb7ec8c6188f17666490e87fa08739f30192ada289780d2a3329b68543c7"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/中文/像素北科-黑字-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/中文/像素北科-黑字-加粗@2x.png",
+      "sha256": "83855b36e5a1022f18123a088e576df42611c98bf68ba0274532ee6b2ab7a056"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/英文/USTB SkyCode-白字-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/英文/USTB SkyCode-白字-加粗.png",
+      "sha256": "fcbf44c3c877c4b0df60abc03229641638bb9fe0b6ad716f3985d45a9cf95b2c"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/英文/USTB SkyCode-白字-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/英文/USTB SkyCode-白字-加粗.svg",
+      "sha256": "4831f23b9761b80f9114d44524d7a7141d781cfc5db6a23486df58cea7023f9c"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/英文/USTB SkyCode-白字-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/英文/USTB SkyCode-白字-加粗@2x.png",
+      "sha256": "a7229dc9fdc51f6f778d06e160748b5d5b802f8c8610b82e0cfac1329c0b73fb"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/英文/USTB SkyCode-蓝字渐变-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/英文/USTB SkyCode-蓝字渐变-加粗.png",
+      "sha256": "bf90e792f7ed73775ef3b27d71b92e3d05a64a2cd31bebca283b42d0b29d145e"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/英文/USTB SkyCode-蓝字渐变-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/英文/USTB SkyCode-蓝字渐变-加粗.svg",
+      "sha256": "42f9e103fd722e462b37f884bae31249a6c7cdef9ccdf8a06d309b1f91eb35ca"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/英文/USTB SkyCode-蓝字渐变-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/英文/USTB SkyCode-蓝字渐变-加粗@2x.png",
+      "sha256": "a882d22f26b9d5b7daae55c1d60bb24cd6896d9dc60a19177d8a23745cb45cd3"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/英文/USTB SkyCode-黑字-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/英文/USTB SkyCode-黑字-加粗.png",
+      "sha256": "958bc6c404608633fc34480b1776ccbfbfa47355d67079d8fcd5878b40ee4d35"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/英文/USTB SkyCode-黑字-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/英文/USTB SkyCode-黑字-加粗.svg",
+      "sha256": "e790f07ce2b27958275871c3d2a3d700ad6fa410c302bfb7c9f4d39351d97550"
+    },
+    {
+      "original": "文字组合版-加粗/几何优化版/英文/USTB SkyCode-黑字-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/几何优化版/英文/USTB SkyCode-黑字-加粗@2x.png",
+      "sha256": "a98d95183391de8cd89b2f5ba36559fa70032cc957ab255166d35ebff606ffb3"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/中文/像素北科-白字-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/中文/像素北科-白字-加粗.png",
+      "sha256": "91ec7900fccfd1993fbd46d92beecf07b0737b40fd8217acbda3374eb76ebd28"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/中文/像素北科-白字-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/中文/像素北科-白字-加粗.svg",
+      "sha256": "7c3af022e578ca6b8a41deef19d0c623bb7574b7a2b468a639bc4b3da35ffae8"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/中文/像素北科-白字-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/中文/像素北科-白字-加粗@2x.png",
+      "sha256": "e3b6b44df608e056fb98ffc6fd66f2af4738b282db3ef426464d137e01ace47c"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/中文/像素北科-蓝字渐变-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/中文/像素北科-蓝字渐变-加粗.png",
+      "sha256": "24dd0b98f43888d12355a1d35bd98285063cd7d87978e6d4de5f3ecea5fe626d"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/中文/像素北科-蓝字渐变-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/中文/像素北科-蓝字渐变-加粗.svg",
+      "sha256": "7f30cde36187c830450bd593a3315e7bd51920fba29f59b1f968f4893f64378a"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/中文/像素北科-蓝字渐变-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/中文/像素北科-蓝字渐变-加粗@2x.png",
+      "sha256": "de0a746e81b9bfed367a6b5bc2404a6129d93f539cc232e1934b3b39c0db4efb"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/中文/像素北科-黑字-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/中文/像素北科-黑字-加粗.png",
+      "sha256": "5f585a56cd4772ef3b6207feb84e6a5c6b51d6ec4f256d8c2cc557855a851c5d"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/中文/像素北科-黑字-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/中文/像素北科-黑字-加粗.svg",
+      "sha256": "fe22f5b067bc8807ab24df52875091e5ddb3f9da43bcfd4002d4b9ac1841e124"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/中文/像素北科-黑字-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/中文/像素北科-黑字-加粗@2x.png",
+      "sha256": "7bcfc97805dd3771d910a4da82e3f48cd0615e2c42df4ddaa50d7176ccc99845"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-白字-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-白字-加粗.png",
+      "sha256": "16f83f4eec3172c1e4d4a7edc4ae3be577c8317d951f38384ae5d38bfbaf9721"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-白字-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-白字-加粗.svg",
+      "sha256": "83d6ecab97e89ea55bcf4e1f33d4900f563ca5649c7cd559d46215a8e10359ae"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-白字-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-白字-加粗@2x.png",
+      "sha256": "5b43057d2d0004797c966244934d1380630244c402e08910b574e5e87bda1c49"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-蓝字渐变-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-蓝字渐变-加粗.png",
+      "sha256": "f5eee99c0c4b2f47c9dce934c3909965f98681473d8a33edcf950c8639ac1c5b"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-蓝字渐变-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-蓝字渐变-加粗.svg",
+      "sha256": "57c5d83e0606295a06bd9328f11551ed5895bdd2df5049f2bc023259b7b10ce4"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-蓝字渐变-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-蓝字渐变-加粗@2x.png",
+      "sha256": "8a272d6df437f075f524dcbe3da14dd9ba9b0166417c8922fc568828f34c5621"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-黑字-加粗.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-黑字-加粗.png",
+      "sha256": "99e8dae0cd08d1aba4fbaff1c18b77d497eb01e84ffbcde1b92586f4e2bffcdc"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-黑字-加粗.svg",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-黑字-加粗.svg",
+      "sha256": "c15d53b5cafda5e8a994fe016341f9c2364f1d4f1fc108a944b602abd69004e2"
+    },
+    {
+      "original": "文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-黑字-加粗@2x.png",
+      "archived": "备份/历史文字版本/文字组合版-加粗/忠实复绘版/英文/USTB SkyCode-黑字-加粗@2x.png",
+      "sha256": "7351c98da705e41f230bc76f1e1aee3ec3ca422dee97a4cc7bd5b92e3d16b522"
+    },
+    {
+      "original": "校对过程/analysis-center.png",
+      "archived": "备份/参考与校对/校对过程/analysis-center.png",
+      "sha256": "495c3dcbe7140c561f208e61783329d6dcd7ec1568cbe9d2ad87cc09cd919810"
+    },
+    {
+      "original": "校对过程/analysis-grid.png",
+      "archived": "备份/参考与校对/校对过程/analysis-grid.png",
+      "sha256": "f3ae78422f752dfd97f9896b6f16bf4f6d379e3b82a4ff4580f28044e9737e61"
+    },
+    {
+      "original": "校对过程/analysis-points.png",
+      "archived": "备份/参考与校对/校对过程/analysis-points.png",
+      "sha256": "4e9c8244d18225da336026bb6db3e0bed066bee4ec6b027bd0cb53651943e934"
+    },
+    {
+      "original": "校对过程/browser-checker.png",
+      "archived": "备份/参考与校对/校对过程/browser-checker.png",
+      "sha256": "599d025d68f93be0e26daaaf8ccf3f7fb06f9319a1e0175dedf10ae5cece933a"
+    },
+    {
+      "original": "校对过程/browser-dark.png",
+      "archived": "备份/参考与校对/校对过程/browser-dark.png",
+      "sha256": "68fdebca37789e42d8945b49c9083d5285f797ed641b7b93ab03c7a70307edb7"
+    },
+    {
+      "original": "校对过程/browser-white.png",
+      "archived": "备份/参考与校对/校对过程/browser-white.png",
+      "sha256": "e51aafdada10d37e62bfab420ee31ebf857fdfdf22afaaadd25ebff062c3b19c"
+    },
+    {
+      "original": "校对过程/comparison-01.png",
+      "archived": "备份/参考与校对/校对过程/comparison-01.png",
+      "sha256": "6b36ae0076b85e6e38b9d062b57511309b779ed4496c8e34a97d8bc9fc733e65"
+    },
+    {
+      "original": "校对过程/comparison-02.png",
+      "archived": "备份/参考与校对/校对过程/comparison-02.png",
+      "sha256": "0ed5fd05f89b3c9acbe27c65139b9161e5d769a7c7a11795bfd50bd9bf591328"
+    },
+    {
+      "original": "校对过程/comparison-03.png",
+      "archived": "备份/参考与校对/校对过程/comparison-03.png",
+      "sha256": "1fee9a739e60107f739e94812e06bfa90a1709e41e08de82763f2affb3e8a4db"
+    },
+    {
+      "original": "校对过程/comparison-04.png",
+      "archived": "备份/参考与校对/校对过程/comparison-04.png",
+      "sha256": "3c1888c163b1232276d56446b334e0b48b5b6bbef2656442972afc208233eb3f"
+    },
+    {
+      "original": "校对过程/difference-01.png",
+      "archived": "备份/参考与校对/校对过程/difference-01.png",
+      "sha256": "3c9fee85305efefa07ce2629476bf41e9f8d23ee2c51b3d51d7fb5272a312c36"
+    },
+    {
+      "original": "校对过程/difference-02.png",
+      "archived": "备份/参考与校对/校对过程/difference-02.png",
+      "sha256": "48a4fc7742cb57a03ff392bdcb4893fa91338bfbb2999dd95df5209e04b03e44"
+    },
+    {
+      "original": "校对过程/difference-03.png",
+      "archived": "备份/参考与校对/校对过程/difference-03.png",
+      "sha256": "964e41f388604bfede3f6d9145f94690f73498f5a94ebaafc37e775f28db56e7"
+    },
+    {
+      "original": "校对过程/difference-04.png",
+      "archived": "备份/参考与校对/校对过程/difference-04.png",
+      "sha256": "71e6f40983b6dc73b7449b2b3227eecdfe1deed6a963abb1df9d4ef049f5a5d6"
+    },
+    {
+      "original": "校对过程/render-browser.png",
+      "archived": "备份/参考与校对/校对过程/render-browser.png",
+      "sha256": "bff634d4b65fdda4376a6da9637842029405fae35f44d67d328f20f33d8d03ac"
+    },
+    {
+      "original": "校对过程/render-ss.png",
+      "archived": "备份/参考与校对/校对过程/render-ss.png",
+      "sha256": "496827fa11fe36dc7665010c65a4947ed55bdc2ab0da6263ce20bd08a26384aa"
+    },
+    {
+      "original": "预览-几何优化.png",
+      "archived": "备份/早期Logo与预览/预览-几何优化.png",
+      "sha256": "bc30cfd1d5c657db41b167ccbf406f588f7905654f0c545f1eda3604117eb564"
+    },
+    {
+      "original": "预览.html",
+      "archived": "备份/早期Logo与预览/预览.html",
+      "sha256": "f1037359b3d1d8284de5df0eb1ce657e7e1892a5c89cdd6ef0db97fb1c488e2a"
+    }
+  ]
+}
